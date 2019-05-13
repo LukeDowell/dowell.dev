@@ -1,2 +1,25 @@
-language: java
-jdk: oraclejdk11
+env:
+  - RELEASE_TAG="release-$TRAVIS_BUILD_NUMBER"
+stages:
+  - build
+  - push
+
+jobs:
+  include:
+    - stage: build
+      language: java
+      jdk: openjdk11
+      install: skip
+      script:
+        - ./gradlew clean build
+      skip_cleanup: true
+
+    - stage: push
+      language: bash
+      services:
+        - docker
+      script:
+        - echo "Pushing dowell.dev version $RELEASE_TAG to docker hub..."
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t dowell.dev:$RELEASE_TAG .
+        - docker push lukedowell/dowell.dev
