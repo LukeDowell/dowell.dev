@@ -7,7 +7,6 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 group = 'dev.dowell'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
@@ -28,7 +27,6 @@ dependencies {
 }
 
 // ########## NPM BUILD CONFIG ############
-
 node {
     download = true
 
