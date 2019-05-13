@@ -1,4 +1,4 @@
-# dowell.dev
+# dowell.dev [![Build Status](https://travis-ci.com/LukeDowell/dowell.dev.svg?branch=master)](https://travis-ci.com/LukeDowell/dowell.dev)
 
 ### React App
 
