@@ -49,13 +49,20 @@ task appNpmBuild(type: NpmTask) {
     args = ["run", "build"]
 }
 
+task appNpmTest(type: NpmTask) {
+    description = "Runs webapp tests"
+    workingDir = file("${project.projectDir}/src/main/webapp")
+    args = ["test"]
+}
+
 task copyWebApp(type: Copy) {
     from 'src/main/webapp/build'
     into 'build/resources/main/static/.'
 }
 
 appNpmBuild.dependsOn appNpmInstall
-copyWebApp.dependsOn appNpmBuild
+appNpmTest.dependsOn appNpmBuild
+copyWebApp.dependsOn appNpmTest
 compileJava.dependsOn copyWebApp
 
 // ########### DOCKER CONFIG ##############
