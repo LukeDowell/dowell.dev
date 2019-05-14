@@ -11,3 +11,5 @@ script:
   - "./gradlew clean build"
 after_script:
   - bash scripts/push-docker-image.sh
+  - bash scripts/deploy-to-droplet.sh
+  - echo "All done (づ｡◕‿‿◕｡)づ"
