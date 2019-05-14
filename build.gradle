@@ -26,7 +26,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-// ########## NPM BUILD CONFIG ############
 node {
     download = true
 
@@ -64,5 +63,3 @@ appNpmBuild.dependsOn appNpmInstall
 appNpmTest.dependsOn appNpmBuild
 copyWebApp.dependsOn appNpmTest
 bootJar.dependsOn copyWebApp
-
-// ########### DOCKER CONFIG ##############
