@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Building and pushing $DOCKER_IMAGE_NAME to docker hub..."
+echo "Building and pushing dowell.dev to docker hub..."
 echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-docker build -t $DOCKER_IMAGE_NAME .
-docker push $DOCKER_IMAGE_NAME
-echo "Finished pushing $DOCKER_IMAGE_NAME to doc- ker hub ^_^"
+docker build -t dowell.dev .
+docker tag dowell.dev lukedowell/dowell.dev:$RELEASE_TAG
+docker push lukedowell/dowell.dev:$RELEASE_TAG
+echo "Finished pushing dowell.dev to docker hub ^_^"e

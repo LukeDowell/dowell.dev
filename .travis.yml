@@ -3,7 +3,6 @@ language: java
 jdk: openjdk11
 env:
   - RELEASE_TAG="release-$TRAVIS_BUILD_NUMBER"
-  - DOCKER_IMAGE_NAME="lukedowell/dowell.dev:$RELEASE_TAG"
 services:
   - docker
 script:
@@ -11,3 +10,4 @@ script:
 deploy:
   - provider: script
     script: bash scripts/build-and-deploy-docker-image.sh
+    skip_cleanup: true
