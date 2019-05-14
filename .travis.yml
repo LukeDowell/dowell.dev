@@ -1,14 +1,13 @@
+install: skip
 language: java
 jdk: openjdk11
 env:
   - RELEASE_TAG="release-$TRAVIS_BUILD_NUMBER"
+  - DOCKER_IMAGE_NAME="lukedowell/dowell.dev:$RELEASE_TAG"
 services:
   - docker
 script:
   - ./gradlew clean build
-after_script:
-  - ls -a
-  - echo "Pushing dowell.dev version $RELEASE_TAG to docker hub..."
-  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-  - docker build -t dowell.dev:$RELEASE_TAG .
-  - docker push lukedowell/dowell.dev
+deploy:
+  - provider: script
+    script: bash scripts/build-and-deploy-docker-image.sh

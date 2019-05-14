@@ -63,6 +63,6 @@ task copyWebApp(type: Copy) {
 appNpmBuild.dependsOn appNpmInstall
 appNpmTest.dependsOn appNpmBuild
 copyWebApp.dependsOn appNpmTest
-compileJava.dependsOn copyWebApp
+bootJar.dependsOn copyWebApp
 
 // ########### DOCKER CONFIG ##############
