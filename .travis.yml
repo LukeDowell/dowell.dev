@@ -5,12 +5,10 @@ env:
   - RELEASE_TAG="release-$TRAVIS_BUILD_NUMBER"
 services:
   - docker
+before_script:
+  - openssl aes-256-cbc -K $encrypted_3ea9ffab9517_key -iv $encrypted_3ea9ffab9517_iv
+  - in .travis/travis_rsa.enc -out .travis/travis_rsa -d
 script:
-  - ./gradlew clean build
+  - "./gradlew clean build"
 after_script:
-  - echo "Building and pushing dowell.dev to docker hub..."
-  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-  - docker build -t dowell.dev .
-  - docker tag dowell.dev lukedowell/dowell.dev:$RELEASE_TAG
-  - docker push lukedowell/dowell.dev:$RELEASE_TAG
-  - echo "Finished pushing dowell.dev to docker hub ^_^"
+  - bash scripts/push-docker-image.sh
