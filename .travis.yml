@@ -1,4 +1,7 @@
 install: skip
+branches:
+  only:
+    - master
 language: java
 jdk: openjdk11
 env:
