@@ -9,10 +9,10 @@ env:
 services:
   - docker
 before_script:
-  - openssl aes-256-cbc -K $encrypted_3ea9ffab9517_key -iv $encrypted_3ea9ffab9517_iv -in .travis/travis_rsa.enc -out .travis/travis_rsa -d
+  - openssl aes-256-cbc -K $encrypted_3ea9ffab9517_key -iv $encrypted_3ea9ffab9517_iv -in deploy/travis_keys/travis_rsa.enc -out deploy/travis_keys/travis_rsa -d
 script:
   - "./gradlew clean build"
 after_script:
-  - bash scripts/push-docker-image.sh
-  - bash scripts/deploy-to-droplet.sh
+  - bash deploy/scripts/push-docker-image.sh
+  - bash deploy/scripts/deploy-to-droplet.sh
   - echo "All done (づ｡◕‿‿◕｡)づ"
