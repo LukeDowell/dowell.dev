@@ -6,10 +6,6 @@ export interface Props {
 }
 
 export class Post extends React.Component<Props, {}> {
-    constructor(props: Props) {
-        super(props);
-    }
-
     generateMarkdownHtml() {
         const markedOptions = {
             baseURL: process.env.PUBLIC_URL,

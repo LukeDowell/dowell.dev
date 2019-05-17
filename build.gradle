@@ -38,24 +38,24 @@ node {
 
 task appNpmInstall(type: NpmTask) {
     description = "Installs all dependencies from package.json"
-    workingDir = file("${project.projectDir}/src/main/webapp")
+    workingDir = file("${project.projectDir}/webapp")
     args = ["install"]
 }
 
 task appNpmBuild(type: NpmTask) {
     description = "Builds production version of the webapp"
-    workingDir = file("${project.projectDir}/src/main/webapp")
+    workingDir = file("${project.projectDir}/webapp")
     args = ["run", "build"]
 }
 
 task appNpmTest(type: NpmTask) {
     description = "Runs webapp tests"
-    workingDir = file("${project.projectDir}/src/main/webapp")
+    workingDir = file("${project.projectDir}/webapp")
     args = ["test"]
 }
 
 task copyWebApp(type: Copy) {
-    from 'src/main/webapp/build'
+    from 'webapp/build'
     into 'build/resources/main/static/.'
 }
 
