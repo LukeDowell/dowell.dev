@@ -7,7 +7,7 @@ export interface Props {
 
 export class Blog extends React.Component<Props, {}> {
     render() {
-        const markdownText = `dowell.dev\n==========\n### Under Construction\n![Bob The Builder](${process.env.PUBLIC_URL + '/bob.png)'}`;
+        const markdownText = `dowell.dev\n==========\n### Hi Michelle\n![Bob The Builder](${process.env.PUBLIC_URL + '/bob.png)'}`;
 
         return <Post markdown={markdownText} />
     }
